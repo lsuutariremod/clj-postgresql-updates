@@ -17,7 +17,7 @@
 
 (defn pooled-db
   [& {:as opts}]
-  (let [original-config (apply core/spec (flatten (seq opts)))
+  (let [original-config (core/spec opts)
         config (db-spec->pool-config original-config)]
     {:datasource (hikari/make-datasource config)}))
 
